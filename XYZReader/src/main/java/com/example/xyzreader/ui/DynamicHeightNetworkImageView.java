@@ -30,6 +30,7 @@ public class DynamicHeightNetworkImageView extends NetworkImageView {
 
         mAspectRatio = aspectRatio;
         requestLayout();
+
     }
 
     @Override
@@ -37,6 +38,11 @@ public class DynamicHeightNetworkImageView extends NetworkImageView {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         Log.v(LOG_TAG, "onMeasure ");
         int measuredWidth = getMeasuredWidth();
-        setMeasuredDimension(measuredWidth, (int) (measuredWidth / mAspectRatio));
+        int measuredHeight = getMeasuredHeight();
+        float calcHeight = measuredWidth / mAspectRatio;
+        int forcedIntHeight = (int)calcHeight;
+        Log.v(LOG_TAG, "float height: " + calcHeight + " --- measured (" + measuredWidth + "w  x " + measuredHeight + "h)  --? (" + measuredWidth + "w  x  " + forcedIntHeight + " h)" );
+//        setMeasuredDimension(measuredWidth,forcedIntHeight );
+        setMeasuredDimension(measuredWidth, measuredHeight);
     }
 }
