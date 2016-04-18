@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    buildToolsVersion "23.0.3"
 
     defaultConfig {
         minSdkVersion 16
@@ -23,6 +23,7 @@ dependencies {
     compile 'com.android.support:palette-v7:22.0.0'
     compile 'com.android.support:recyclerview-v7:22.0.0'
     compile 'com.android.support:cardview-v7:22.0.0'
+    compile 'com.android.support:design:22.2.0'
     compile 'com.squareup.okhttp3:okhttp:3.1.2'
     compile files('libs/volley.jar')
 }
