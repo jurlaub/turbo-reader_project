@@ -27,5 +27,10 @@
     <color name="green_800">#2E7D32</color>
     <color name="lime_A200">#EEFF41</color>
 
+    <!-- Colors that match the icon-->
+    <color name="deep_orange_500">#FF5722</color>
+    <color name="deep_orange_800">#D84315</color>
+    <color name="yellow_A200">#FFFF00</color>
+
     
 </resources>
