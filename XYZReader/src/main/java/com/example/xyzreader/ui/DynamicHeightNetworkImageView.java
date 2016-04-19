@@ -42,7 +42,9 @@ public class DynamicHeightNetworkImageView extends NetworkImageView {
         float calcHeight = measuredWidth / mAspectRatio;
         int forcedIntHeight = (int)calcHeight;
         Log.v(LOG_TAG, "float height: " + calcHeight + " --- measured (" + measuredWidth + "w  x " + measuredHeight + "h)  --? (" + measuredWidth + "w  x  " + forcedIntHeight + " h)" );
-//        setMeasuredDimension(measuredWidth,forcedIntHeight );
-        setMeasuredDimension(measuredWidth, measuredHeight);
+
+        setMeasuredDimension(measuredWidth,forcedIntHeight );
+
+//        setMeasuredDimension(measuredWidth, measuredHeight);
     }
 }

@@ -48,6 +48,8 @@ public class ArticleListActivity extends ActionBarActivity implements
 //        ((CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_layout)).setTitle("XYZreader");
 //        final View toolbarContainerView = findViewById(R.id.toolbar_container);
 
+
+
 //          Used code from stackoverflow for having the title appear/disappear
 //          http://stackoverflow.com/questions/31662416/show-collapsingtoolbarlayout-title-only-when-collapsed
         final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_layout);
@@ -156,7 +158,7 @@ public class ArticleListActivity extends ActionBarActivity implements
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = getLayoutInflater().inflate(R.layout.list_item_article_2, parent, false);
+            View view = getLayoutInflater().inflate(R.layout.list_item_article, parent, false);
             final ViewHolder vh = new ViewHolder(view);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
