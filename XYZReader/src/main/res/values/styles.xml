@@ -33,4 +33,10 @@
         <!--<item name="android:statusBarColor">@android:color/transparent</item>-->
     </style>
 
+
+    <style name="TitleTextColor">
+        <item name="android:textColor">@color/lime_A200</item>
+
+    </style>
+
 </resources>
