@@ -40,7 +40,7 @@
         <item name="android:paddingStart">@dimen/keyline_1</item>
         <item name="android:paddingRight">@dimen/keyline_1</item>
         <item name="android:paddingEnd">@dimen/keyline_1</item>
-        <item name="android:paddingBottom">@dimen/keyline_1</item>
+        <item name="android:paddingBottom">@dimen/keyline_space</item>
 
 
 
