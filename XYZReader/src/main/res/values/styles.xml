@@ -34,9 +34,46 @@
     </style>
 
 
-    <style name="TitleTextColor">
-        <item name="android:textColor">@color/lime_A200</item>
+    <style name="DetailTitleSettings" >
+        <!-- Keylines-->
+        <item name="android:paddingLeft">@dimen/keyline_1</item>
+        <item name="android:paddingStart">@dimen/keyline_1</item>
+        <item name="android:paddingRight">@dimen/keyline_1</item>
+        <item name="android:paddingEnd">@dimen/keyline_1</item>
+        <item name="android:paddingBottom">@dimen/keyline_1</item>
+
+
+
+        <item name="android:textColor">@color/ltgray</item>
+
 
     </style>
+
+    <style name="DetailTitleSettings.Color">
+    </style>
+
+    <style name="DetailBody">
+        <item name="android:paddingLeft">@dimen/keyline_1</item>
+        <item name="android:paddingStart">@dimen/keyline_1</item>
+        <item name="android:paddingRight">@dimen/keyline_1</item>
+        <item name="android:paddingEnd">@dimen/keyline_1</item>
+        <item name="android:paddingBottom">@dimen/keyline_1</item>
+        <item name="android:paddingTop">@dimen/keyline_1</item>
+
+    </style>
+
+
+
+    <!-- -->
+    <!--<style name="TitleTextColor">-->
+        <!-- -->
+
+    <!--</style>-->
+    <!-- -->
+    <!-- -->
+    <!--<style name="DetailMargin">-->
+
+        <!-- -->
+    <!--</style>-->
 
 </resources>
