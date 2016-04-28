@@ -154,7 +154,7 @@ public class ArticleDetailFragment extends Fragment implements
 //            }
 //
 //        });
-
+//
 
 
         return mRootView;
@@ -218,6 +218,7 @@ public class ArticleDetailFragment extends Fragment implements
                     });
         } else {
 
+            Log.v(TAG, "empty, things are set to na");
             mRootView.setVisibility(View.GONE);
             mTitleView.setText("N/A");
             mByLineView.setText("N/A" );

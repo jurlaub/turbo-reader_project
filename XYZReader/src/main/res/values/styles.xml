@@ -40,11 +40,11 @@
         <item name="android:paddingStart">@dimen/keyline_1</item>
         <item name="android:paddingRight">@dimen/keyline_1</item>
         <item name="android:paddingEnd">@dimen/keyline_1</item>
-        <item name="android:paddingBottom">@dimen/keyline_space</item>
+        <item name="android:paddingBottom">@dimen/keyline_half_space</item>
 
 
 
-        <item name="android:textColor">@color/ltgray</item>
+        <item name="android:textColor">@color/lime_A200</item>
 
 
     </style>
