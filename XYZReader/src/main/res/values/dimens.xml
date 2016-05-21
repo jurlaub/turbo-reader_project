@@ -10,6 +10,10 @@
     <dimen name="fab_margin">24dp</dimen>
 
     <dimen name="appbar_elevation">4dp</dimen>
+    <dimen name="card_resting_elevation">2dp</dimen>
+
+    <!-- resting +raised total = 8dp-->
+    <dimen name="card_raised_elevation">6dp</dimen>
 
 
     <dimen name="keyline_1">16dp</dimen>

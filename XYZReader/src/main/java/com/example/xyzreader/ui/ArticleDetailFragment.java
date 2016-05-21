@@ -8,6 +8,8 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.ShareCompat;
 import android.text.Html;
 import android.text.format.DateUtils;
@@ -104,7 +106,7 @@ public class ArticleDetailFragment extends Fragment implements
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        mRootView = inflater.inflate(R.layout.fragment_article_detail_3, container, false);
+        mRootView = inflater.inflate(R.layout.fragment_article_detail_2, container, false);
 
 
         mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
@@ -125,36 +127,41 @@ public class ArticleDetailFragment extends Fragment implements
         bindViews();
 //        updateStatusBar();
 
-//        final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) mRootView.findViewById(R.id.collapsing_toolbar_layout);
-//        AppBarLayout appBarLayout = (AppBarLayout) mRootView.findViewById(R.id.app_bar_layout);
-//        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-//            boolean isShow = false;
-//            int scrollRange = -1;
-//
-//            @Override
-//            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-//                if (scrollRange == -1) {
-//                    scrollRange = appBarLayout.getTotalScrollRange();
-//                }
-//
-//
-//                if (scrollRange + verticalOffset == 0  && mTitleText != null) {
-//                    collapsingToolbarLayout.setTitle(mTitleText);
-//                    mTitleView.setVisibility(View.INVISIBLE);
-//                    isShow = true;
-//                } else if (scrollRange + verticalOffset == 0) {
-//                    collapsingToolbarLayout.setTitle(getString(R.string.app_name));
-//                    mTitleView.setVisibility(View.INVISIBLE);
-//                    isShow = true;
-//                } else if (isShow) {
-//                    collapsingToolbarLayout.setTitle("");
-//                    mTitleView.setVisibility(View.VISIBLE);
-//                    isShow = false;
-//                }
-//            }
-//
-//        });
-//
+
+        final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) mRootView.findViewById(R.id.collapsing_toolbar_layout);
+
+
+
+        AppBarLayout appBarLayout = (AppBarLayout) mRootView.findViewById(R.id.app_bar_layout);
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            boolean isShow = false;
+            int scrollRange = -1;
+
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (scrollRange == -1) {
+                    scrollRange = appBarLayout.getTotalScrollRange();
+                }
+
+
+                if (scrollRange + verticalOffset == 0  && mTitleText != null) {
+                    collapsingToolbarLayout.setTitle(mTitleText);
+
+                    mTitleView.setVisibility(View.INVISIBLE);
+                    isShow = true;
+                } else if (scrollRange + verticalOffset == 0) {
+                    collapsingToolbarLayout.setTitle(getString(R.string.app_name));
+                    mTitleView.setVisibility(View.INVISIBLE);
+                    isShow = true;
+                } else if (isShow) {
+                    collapsingToolbarLayout.setTitle("");
+                    mTitleView.setVisibility(View.VISIBLE);
+                    isShow = false;
+                }
+            }
+
+        });
+
 
 
         return mRootView;
