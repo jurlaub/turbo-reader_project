@@ -54,6 +54,8 @@ public class ArticleDetailFragment extends Fragment implements
     private TextView mByLineView;
 
 
+
+
     private int mScrollY;
     private boolean mIsCard = false;
     private int mStatusBarFullOpacityBottom;
@@ -128,7 +130,14 @@ public class ArticleDetailFragment extends Fragment implements
 //        updateStatusBar();
 
 
+
         final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) mRootView.findViewById(R.id.collapsing_toolbar_layout);
+
+//        mToolbar = (Toolbar) mRootView.findViewById(R.id.app_bar);
+//        ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar);
+//        mToolbar.setTitle("");
+
+
 
 
 
@@ -145,22 +154,36 @@ public class ArticleDetailFragment extends Fragment implements
 
 
                 if (scrollRange + verticalOffset == 0  && mTitleText != null) {
+
                     collapsingToolbarLayout.setTitle(mTitleText);
+
 
                     mTitleView.setVisibility(View.INVISIBLE);
                     isShow = true;
+                    Log.v(TAG, "scrollRange+verticalOffset + mTitleText.");
+
                 } else if (scrollRange + verticalOffset == 0) {
                     collapsingToolbarLayout.setTitle(getString(R.string.app_name));
-                    mTitleView.setVisibility(View.INVISIBLE);
+
+                    mTitleView.setText("");
                     isShow = true;
+                    Log.v(TAG, "scrollRange+verticalOffset ");
+
                 } else if (isShow) {
                     collapsingToolbarLayout.setTitle("");
+
+
+
                     mTitleView.setVisibility(View.VISIBLE);
                     isShow = false;
+
+                    Log.v(TAG, "isShow = True ");
+
                 }
             }
 
         });
+
 
 
 
@@ -188,6 +211,7 @@ public class ArticleDetailFragment extends Fragment implements
 
             mTitleText = mCursor.getString(ArticleLoader.Query.TITLE);
             mTitleView.setText(mTitleText);
+//            mToolbar.setTitle(mTitleText);
 
             mByLineView.setText(Html.fromHtml(
                     DateUtils.getRelativeTimeSpanString(
