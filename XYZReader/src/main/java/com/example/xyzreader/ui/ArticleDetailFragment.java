@@ -6,10 +6,7 @@ import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.NavUtils;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -39,18 +36,12 @@ public class ArticleDetailFragment extends Fragment implements
     private static final String TAG = "ArticleDetailFragment";
 
     public static final String ARG_ITEM_ID = "item_id";
-    private static final float PARALLAX_FACTOR = 1.25f;
+//    private static final float PARALLAX_FACTOR = 1.25f;
 
     private Cursor mCursor;
     private long mItemId;
     private View mRootView;
-    private int mMutedColor = 0xFF333333;
-//    private ObservableScrollView mScrollView;
-//    private DrawInsetsFrameLayout mDrawInsetsFrameLayout;
-    private ColorDrawable mStatusBarColorDrawable;
 
-    private int mTopInset;
-    private View mPhotoContainerView;
     private ImageView mPhotoView;
     private String mTitleText;
 
@@ -60,10 +51,10 @@ public class ArticleDetailFragment extends Fragment implements
 
 
 
-
-    private int mScrollY;
+//
+//    private int mScrollY;
     private boolean mIsCard = false;
-    private int mStatusBarFullOpacityBottom;
+//    private int mStatusBarFullOpacityBottom;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -90,14 +81,11 @@ public class ArticleDetailFragment extends Fragment implements
         }
 
         mIsCard = getResources().getBoolean(R.bool.detail_is_card);
-//        mStatusBarFullOpacityBottom = getResources().getDimensionPixelSize(
-//                R.dimen.detail_card_top_margin);
+
         setHasOptionsMenu(true);
     }
 
-    public ArticleDetailActivity getActivityCast() {
-        return (ArticleDetailActivity) getActivity();
-    }
+
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -114,18 +102,13 @@ public class ArticleDetailFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 
-        if(ArticleDetailActivity.mLayoutView) {
-            mRootView = inflater.inflate(R.layout.fragment_article_detail_2, container, false);
-        } else {
+
             mRootView = inflater.inflate(R.layout.fragment_article_detail_3, container, false);
-        }
 
 
 
         mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
-//        mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
 
-        mStatusBarColorDrawable = new ColorDrawable(0);
 
         mRootView.findViewById(R.id.share_fab).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,66 +121,10 @@ public class ArticleDetailFragment extends Fragment implements
         });
 
         bindViews();
-//        updateStatusBar();
 
 
 
-
-
-
-        if (ArticleDetailActivity.mLayoutView) {
-            final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) mRootView.findViewById(R.id.collapsing_toolbar_layout);
-
-
-
-            AppBarLayout appBarLayout = (AppBarLayout) mRootView.findViewById(R.id.app_bar_layout);
-            appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-                boolean isShow = false;
-                int scrollRange = -1;
-
-                @Override
-                public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                    if (scrollRange == -1) {
-                        scrollRange = appBarLayout.getTotalScrollRange();
-                    }
-
-
-                    if (scrollRange + verticalOffset == 0  && mTitleText != null) {
-
-                        collapsingToolbarLayout.setTitle(mTitleText);
-
-
-                        mTitleView.setVisibility(View.INVISIBLE);
-                        isShow = true;
-                        Log.v(TAG, "scrollRange+verticalOffset + mTitleText.");
-
-                    } else if (scrollRange + verticalOffset == 0) {
-                        collapsingToolbarLayout.setTitle(getString(R.string.app_name));
-
-                        mTitleView.setText("");
-                        isShow = true;
-                        Log.v(TAG, "scrollRange+verticalOffset ");
-
-                    } else if (isShow) {
-                        collapsingToolbarLayout.setTitle("");
-
-
-
-                        mTitleView.setVisibility(View.VISIBLE);
-                        isShow = false;
-
-                        Log.v(TAG, "isShow = True ");
-
-                    }
-                }
-
-            });
-
-
-
-
-
-        } else {
+            // Set Toolbar for the current fragment using the container activity
             Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.app_bar);
 
             if (toolbar != null) {
@@ -208,21 +135,16 @@ public class ArticleDetailFragment extends Fragment implements
                 ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+
+
                 if(mTitleText != null) {
-//                    toolbar.setTitle(mTitleText);
+
                     ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(mTitleText);
                 }
 
 
-            }
-
-
         }
 
-
-//        mToolbar = (Toolbar) mRootView.findViewById(R.id.app_bar);
-//        ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar);
-//        mToolbar.setTitle("");
 
 
 
