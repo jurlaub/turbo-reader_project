@@ -10,11 +10,15 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.app.NavUtils;
 import android.support.v4.app.ShareCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -52,6 +56,7 @@ public class ArticleDetailFragment extends Fragment implements
 
     private TextView mTitleView;
     private TextView mByLineView;
+
 
 
 
@@ -108,7 +113,13 @@ public class ArticleDetailFragment extends Fragment implements
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        mRootView = inflater.inflate(R.layout.fragment_article_detail_2, container, false);
+
+        if(ArticleDetailActivity.mLayoutView) {
+            mRootView = inflater.inflate(R.layout.fragment_article_detail_2, container, false);
+        } else {
+            mRootView = inflater.inflate(R.layout.fragment_article_detail_3, container, false);
+        }
+
 
 
         mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
@@ -131,7 +142,83 @@ public class ArticleDetailFragment extends Fragment implements
 
 
 
-        final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) mRootView.findViewById(R.id.collapsing_toolbar_layout);
+
+
+
+        if (ArticleDetailActivity.mLayoutView) {
+            final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) mRootView.findViewById(R.id.collapsing_toolbar_layout);
+
+
+
+            AppBarLayout appBarLayout = (AppBarLayout) mRootView.findViewById(R.id.app_bar_layout);
+            appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+                boolean isShow = false;
+                int scrollRange = -1;
+
+                @Override
+                public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                    if (scrollRange == -1) {
+                        scrollRange = appBarLayout.getTotalScrollRange();
+                    }
+
+
+                    if (scrollRange + verticalOffset == 0  && mTitleText != null) {
+
+                        collapsingToolbarLayout.setTitle(mTitleText);
+
+
+                        mTitleView.setVisibility(View.INVISIBLE);
+                        isShow = true;
+                        Log.v(TAG, "scrollRange+verticalOffset + mTitleText.");
+
+                    } else if (scrollRange + verticalOffset == 0) {
+                        collapsingToolbarLayout.setTitle(getString(R.string.app_name));
+
+                        mTitleView.setText("");
+                        isShow = true;
+                        Log.v(TAG, "scrollRange+verticalOffset ");
+
+                    } else if (isShow) {
+                        collapsingToolbarLayout.setTitle("");
+
+
+
+                        mTitleView.setVisibility(View.VISIBLE);
+                        isShow = false;
+
+                        Log.v(TAG, "isShow = True ");
+
+                    }
+                }
+
+            });
+
+
+
+
+
+        } else {
+            Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.app_bar);
+
+            if (toolbar != null) {
+
+
+                ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+                if(mTitleText != null) {
+//                    toolbar.setTitle(mTitleText);
+                    ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(mTitleText);
+                }
+
+
+            }
+
+
+        }
+
 
 //        mToolbar = (Toolbar) mRootView.findViewById(R.id.app_bar);
 //        ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar);
@@ -141,56 +228,21 @@ public class ArticleDetailFragment extends Fragment implements
 
 
 
-        AppBarLayout appBarLayout = (AppBarLayout) mRootView.findViewById(R.id.app_bar_layout);
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            boolean isShow = false;
-            int scrollRange = -1;
-
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                if (scrollRange == -1) {
-                    scrollRange = appBarLayout.getTotalScrollRange();
-                }
-
-
-                if (scrollRange + verticalOffset == 0  && mTitleText != null) {
-
-                    collapsingToolbarLayout.setTitle(mTitleText);
-
-
-                    mTitleView.setVisibility(View.INVISIBLE);
-                    isShow = true;
-                    Log.v(TAG, "scrollRange+verticalOffset + mTitleText.");
-
-                } else if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbarLayout.setTitle(getString(R.string.app_name));
-
-                    mTitleView.setText("");
-                    isShow = true;
-                    Log.v(TAG, "scrollRange+verticalOffset ");
-
-                } else if (isShow) {
-                    collapsingToolbarLayout.setTitle("");
-
-
-
-                    mTitleView.setVisibility(View.VISIBLE);
-                    isShow = false;
-
-                    Log.v(TAG, "isShow = True ");
-
-                }
-            }
-
-        });
-
-
-
 
         return mRootView;
     }
 
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(getActivity());
+                Log.v(TAG, "The home arrow was selected");
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 
     private void bindViews() {

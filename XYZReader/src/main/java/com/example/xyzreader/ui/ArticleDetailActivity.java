@@ -7,7 +7,6 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v13.app.FragmentStatePagerAdapter;
-import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -39,6 +38,8 @@ public class ArticleDetailActivity extends AppCompatActivity
     private View mUpButtonContainer;
     private View mUpButton;
 
+    public static boolean mLayoutView = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +51,10 @@ public class ArticleDetailActivity extends AppCompatActivity
         setContentView(R.layout.activity_article_detail);
 
 
+//        if(!mLayoutView) {
+//            Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
+//            setSupportActionBar(toolbar);
+//        }
 
 
         getLoaderManager().initLoader(0, null, this);
@@ -118,8 +123,9 @@ public class ArticleDetailActivity extends AppCompatActivity
         switch (item.getItemId()) {
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
+//                NavUtils.navigateUpFromSameTask(this);
+                Log.v(TAG, "The home arrow was selected");
+                return false;
         }
         return super.onOptionsItemSelected(item);
     }
