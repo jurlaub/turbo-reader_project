@@ -33,32 +33,36 @@
         <!--<item name="android:statusBarColor">@android:color/transparent</item>-->
     </style>
 
-
-    <style name="DetailTitleSettings" >
+    <style name="Awesome">
         <!-- Keylines-->
         <item name="android:paddingLeft">@dimen/keyline_1</item>
         <item name="android:paddingStart">@dimen/keyline_1</item>
         <item name="android:paddingRight">@dimen/keyline_1</item>
         <item name="android:paddingEnd">@dimen/keyline_1</item>
-        <item name="android:paddingBottom">@dimen/keyline_half_space</item>
 
 
 
+
+    </style>
+
+
+    <style name="Awesome.ListTitleSettings">
         <item name="android:textColor">@color/ltgray</item>
-
-
+        <item name="android:fontFamily">sans-serif-condensed</item>
     </style>
 
-    <style name="DetailTitleSettings.Color">
+    <!-- For Detail View if there is a need.-->
+    <style name="Awesome.DetailTitleSettings" >
+        <item name="android:textColor">@color/ltgray</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
     </style>
 
-    <style name="DetailBody">
-        <item name="android:paddingLeft">@dimen/keyline_1</item>
-        <item name="android:paddingStart">@dimen/keyline_1</item>
-        <item name="android:paddingRight">@dimen/keyline_1</item>
-        <item name="android:paddingEnd">@dimen/keyline_1</item>
+    <!--<style name="Awesome.DetailTitleSettings.Color">-->
+    <!--</style>-->
+
+    <style name="Awesome.DetailBody">
+        <item name="android:paddingTop">@dimen/keyline_space</item>
         <item name="android:paddingBottom">@dimen/keyline_1</item>
-        <item name="android:paddingTop">@dimen/keyline_1</item>
 
     </style>
 

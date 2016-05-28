@@ -41,10 +41,33 @@ public class DynamicHeightNetworkImageView extends NetworkImageView {
         int measuredHeight = getMeasuredHeight();
         float calcHeight = measuredWidth / mAspectRatio;
         int forcedIntHeight = (int)calcHeight;
-        Log.v(LOG_TAG, "float height: " + calcHeight + " --- measured (" + measuredWidth + "w  x " + measuredHeight + "h)  --? (" + measuredWidth + "w  x  " + forcedIntHeight + " h)" );
+        Log.v(LOG_TAG, "float height: " + calcHeight + " --- measured (" + measuredWidth + "w  x " + measuredHeight + "h)  --? (" + measuredWidth + "w  x  " + forcedIntHeight + " h)");
 
-        setMeasuredDimension(measuredWidth,forcedIntHeight );
+        setMeasuredDimension(measuredWidth, forcedIntHeight);
 
 //        setMeasuredDimension(measuredWidth, measuredHeight);
+
+
+//        int measuredWidth = getMeasuredWidth();
+//        int measuredHeight = getMeasuredHeight();
+//
+//        float calcWidth = measuredHeight / mAspectRatio;
+//
+//
+////        float calcHeight = measuredWidth / mAspectRatio;
+////        int forcedIntHeight = (int)calcHeight;
+//        int forcedIntWidth = (int)calcWidth;
+//
+//        Log.v(LOG_TAG, "float height: " + calcWidth + " --- measured (" + measuredWidth + "w  x " + measuredHeight + "h)  --? (" + measuredWidth + "w  x  " + forcedIntWidth + " h)" );
+//
+//        setMeasuredDimension(forcedIntWidth, measuredHeight);
+
+
+
+
+
     }
+
+
+
 }

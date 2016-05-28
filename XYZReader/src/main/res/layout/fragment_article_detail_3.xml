@@ -50,17 +50,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/detail_title_text_size"
-                    android:fontFamily="sans-serif-condensed"
-                    style="@style/DetailTitleSettings.Color"
+                    android:paddingBottom="@dimen/keyline_half_space"
+                    style="@style/Awesome.DetailTitleSettings"
                     />
 
                 <TextView
                     android:id="@+id/article_byline"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/keyline_space"
                     android:textSize="@dimen/detail_subtitle_text_size"
-                    android:fontFamily="sans-serif-condensed"
-                    style="@style/DetailTitleSettings.Color"
+                    style="@style/Awesome.DetailTitleSettings"
 
 
                     />
@@ -78,8 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/detail_body_text_size"
-            android:backgroundTint="@color/green_500"
-            style="@style/DetailBody"
+            style="@style/Awesome.DetailBody"
             />
 
     <!--</LinearLayout>-->
@@ -97,8 +96,8 @@
         android:layout_gravity="bottom|end"
         android:layout_marginRight="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/fab_margin"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="@dimen/fab_width"
+        android:layout_height="@dimen/fab_height"
         android:src="@drawable/ic_share"
         android:elevation="@dimen/fab_elevation"
         android:contentDescription="@string/action_share" />
